@@ -5,3 +5,7 @@ venv
 
 #Note taking
 notes.txt
+
+
+#Misc files
+__pycache__
