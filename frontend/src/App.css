@@ -74,3 +74,19 @@ body {
   text-align: center;
   font-size: 0.9rem;
 }
+
+.results-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.template-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: center;
+}
+

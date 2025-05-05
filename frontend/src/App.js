@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import TemplateSearch from './TemplateSearch'; // ⬅️ Import your component
 
 function App() {
   return (
@@ -10,14 +11,7 @@ function App() {
 
       <main className="app-main">
         <h2>Find the perfect website template</h2>
-        <form className="search-form" onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="e.g. dark portfolio blog"
-          />
-          <button type="submit" className="search-button">Search</button>
-        </form>
+        <TemplateSearch /> {/* ⬅️ Use the component here */}
       </main>
 
       <footer className="app-footer">
