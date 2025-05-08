@@ -16,22 +16,20 @@ function TemplateSearch() {
 
   return (
     <div>
-      <form className="search-form" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
-        <input
-          type="text"
-          className="search-input"
-          placeholder="e.g. dark portfolio blog"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit" className="search-button">Search</button>
-      </form>
+      <input
+        type="text"
+        placeholder="Search templates..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="search-input"
+      />
+      <button onClick={handleSearch} className="search-button">Search</button>
 
       <div className="results-container">
         {results.map((template) => (
           <div key={template.id} className="template-card">
+            <img src={template.thumbnail} alt={template.title} />
             <h3>{template.title}</h3>
-            <img src={template.thumbnail} alt={template.title} width="150" />
             <p>{template.description}</p>
           </div>
         ))}

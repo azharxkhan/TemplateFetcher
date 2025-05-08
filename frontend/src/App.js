@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import TemplateSearch from './TemplateSearch'; // ⬅️ Import your component
+import TemplateSearch from './TemplateSearch';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
 
       <main className="app-main">
         <h2>Find the perfect website template</h2>
-        <TemplateSearch /> {/* ⬅️ Use the component here */}
+        <TemplateSearch />
       </main>
 
       <footer className="app-footer">
