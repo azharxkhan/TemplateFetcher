@@ -1,9 +1,7 @@
-from pydantic import BaseModel, HttpUrl
-from typing import Optional
+from pydantic import BaseModel
 
 class Template(BaseModel):
-    id: int
     title: str
     description: str
-    thumbnail: HttpUrl
-    url: HttpUrl
+    thumbnail: str
+    link: str
