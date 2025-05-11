@@ -1,38 +1,19 @@
-from fastapi import APIRouter, HTTPException, Query
-from typing import List, Optional
+from fastapi import APIRouter, HTTPException
+from utils.scraper import scrape_templates
+from database import get_templates
+import asyncio
 
 router = APIRouter()
 
-# Temporary in-memory storage for templates
-TEMPLATES = [
-    {
-        "id": 1,
-        "title": "Dark Portfolio Blog",
-        "description": "A modern dark-themed portfolio template.",
-        "thumbnail": "https://via.placeholder.com/150",
-        "url": "https://example.com/template1"
-    },
-    {
-        "id": 2,
-        "title": "Bright Business Landing",
-        "description": "A clean and minimal landing page for businesses.",
-        "thumbnail": "https://via.placeholder.com/150",
-        "url": "https://example.com/template2"
-    }
-]
-
 @router.get("/templates")
-def search_templates(query: Optional[str] = Query(None)):
-    if not query:
-        return {"results": TEMPLATES}
+async def search_templates(query: str):
+    templates = get_templates(query)
     
-    filtered_templates = [
-        template for template in TEMPLATES 
-        if query.lower() in template["title"].lower()
-        or query.lower() in template["description"].lower()
-    ]
+    if not templates:
+        await scrape_templates(query)
+        templates = get_templates(query)
     
-    if not filtered_templates:
+    if not templates:
         raise HTTPException(status_code=404, detail="No templates found.")
-    
-    return {"results": filtered_templates}
+
+    return {"results": [{"title": t[1], "description": t[2], "thumbnail": t[3], "url": t[4]} for t in templates]}
