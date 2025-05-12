@@ -1,6 +1,16 @@
 from fastapi import FastAPI
-from routers import templates
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-app.include_router(templates.router, prefix="/api")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/templates")
+async def get_templates():
+    return {"results": ["Template 1", "Template 2"]}
