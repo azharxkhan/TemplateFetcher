@@ -2,6 +2,6 @@ from pydantic import BaseModel
 
 class Template(BaseModel):
     title: str
-    description: str
-    thumbnail: str
+    image_url: str
     link: str
+    source: str
