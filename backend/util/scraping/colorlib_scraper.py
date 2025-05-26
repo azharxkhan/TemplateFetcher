@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from models.template import Template
+from backend.models.template import Template
 import aiohttp
 
 async def scrape_colorlib(query: str = ""):
