@@ -1,5 +1,5 @@
 from playwright.async_api import async_playwright
-from models.template import Template
+from backend.models.template import Template
 
 async def scrape_wix():
     templates = []
