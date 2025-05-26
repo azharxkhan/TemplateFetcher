@@ -1,7 +1,7 @@
 import asyncio
 from .playwright_scraper import scrape_wix
 from .colorlib_scraper import scrape_colorlib
-from database.db import add_template
+from backend.database import add_template
 
 async def scrape_templates(query: str = ""):
     print("Scraping templates...")
